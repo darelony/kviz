@@ -38,7 +38,7 @@ export const registerUser = async (username, email, password) => {
   return data;
 };
 
-// ================= QUIZ =================
+
 
 // dobavljanje pitanja
 export const getQuestions = async () => {

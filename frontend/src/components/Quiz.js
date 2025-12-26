@@ -25,7 +25,7 @@ const Quiz = () => {
   }, []);
 
   useEffect(() => {
-    // Kada nema preostalih pitanja, završava kviz
+    
     if (remainingQuestions.length === 0 && questions.length > 0) {
       setQuizFinished(true);
     }
@@ -33,7 +33,7 @@ const Quiz = () => {
 
   if (questions.length === 0) return <div>Loading questions...</div>;
 
-  // Ako je kviz završen, prikaži rezultat i Scoreboard
+ 
   if (quizFinished) {
     return (
       <div className="quiz-result-container">
@@ -45,7 +45,7 @@ const Quiz = () => {
     );
   }
 
-  // Proveri da li trenutno pitanje postoji
+
   const currentQuestion = remainingQuestions[0];
   if (!currentQuestion) return <div>Loading next question...</div>;
 

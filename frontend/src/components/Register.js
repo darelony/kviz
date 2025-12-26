@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import { registerUser } from "../api/api";
-import "./GlassLogin.css"; // ista stilizacija za uniformnost
+import "./GlassLogin.css"; 
 
 function Register() {
   const { login } = useContext(AuthContext);
@@ -18,11 +18,11 @@ function Register() {
       return;
     }
 
-    // pozovi backend API za registraciju
+    
     try {
       const res = await registerUser(username, email, password);
       if (res.token) {
-        login(res.token, res.user); // upis u kontekst
+        login(res.token, res.user); 
       } else {
         alert(res.error || "Registration failed");
       }

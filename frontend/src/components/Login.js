@@ -17,7 +17,7 @@ function Login() {
       const data = await loginUser(email, password);
 
       if (data.token) {
-        login(data.token, data.user); // ⬅️ PRAVI TOKEN
+        login(data.token, data.user); 
       } else {
         setError("Invalid credentials");
       }
