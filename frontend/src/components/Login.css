@@ -1,0 +1,90 @@
+/* Pozadina sa gradientom */
+.login-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Karta login-a */
+.login-card {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+  text-align: center;
+  width: 350px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 35px rgba(0,0,0,0.3);
+}
+
+/* Naslov */
+.login-title {
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Forma */
+.login-form input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+}
+
+.login-form input:focus {
+  border-color: #2575fc;
+  box-shadow: 0 0 8px rgba(37, 117, 252, 0.3);
+  outline: none;
+}
+
+/* Dugme prijave */
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background: #2575fc;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+  background: #6a11cb;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Redirekcija za registraciju */
+.register-redirect {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.btn-register {
+  margin-left: 8px;
+  color: #2575fc;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-register:hover {
+  color: #6a11cb;
+  text-decoration: underline;
+}

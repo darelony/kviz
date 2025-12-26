@@ -1,0 +1,67 @@
+.quiz-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, #ff9d76 0%, #5c0f0f 100%);
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.quiz-card {
+  width: 90%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.quiz-question {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 30px;
+  text-shadow: 0 0 8px #ff9d76;
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.quiz-btn {
+  padding: 16px;
+  border-radius: 12px;
+  border: none;
+  background: #ff6f61;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quiz-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* tačan odgovor */
+.quiz-btn.correct {
+  background: #00ff7f !important;
+  color: #000;
+}
+
+/* pogrešan odgovor */
+.quiz-btn.wrong {
+  background: #ff0000 !important;
+  color: #fff;
+}
+
+.quiz-result {
+  color: #fff;
+  font-size: 2rem;
+  text-align: center;
+}

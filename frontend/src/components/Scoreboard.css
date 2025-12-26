@@ -1,0 +1,70 @@
+.scoreboard-page {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: radial-gradient(circle at top, #ff8c00 0%, #2b0057 100%);
+  font-family: 'Helvetica Neue', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+
+.scoreboard-title {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px #ff8c00;
+}
+
+.scoreboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.score-card {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 25px 20px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.score-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.score-username {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.score-details {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.score-correct {
+  color: #00ff94;
+}
+
+.score-wrong {
+  color: #ff4d4d;
+}
+
+.score-points {
+  color: #ffff00;
+}
+
+.scoreboard-loading {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-top: 50px;
+}
