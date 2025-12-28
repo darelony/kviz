@@ -78,7 +78,10 @@ export const getScoreboard = async () => {
     }
   });
 
- 
+  if (!res.ok) {
+    throw new Error("Failed to fetch scoreboard");
+  }
+
   return res.json();
 };
 

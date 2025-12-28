@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Quiz from "./components/Quiz";
@@ -8,12 +8,12 @@ import { AuthProvider } from "./context/AuthContext";
 function App() {
   return (
     <AuthProvider>
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/quiz" element={<Quiz />} />
-      <Route path="/scoreboard" element={<Scoreboard />} />
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/quiz" element={<Quiz key={Date.now()} />} />
+        <Route path="/scoreboard" element={<Scoreboard />} />
+      </Routes>
     </AuthProvider>
   );
 }

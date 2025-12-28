@@ -1,24 +1,42 @@
 import { useEffect, useState } from "react";
-import { getScoreboard } from "../api/api"; 
+import { getScoreboard, logout } from "../api/api"; 
+import { useNavigate } from "react-router-dom";
 import "./Scoreboard.css";
 
 const Scoreboard = () => {
   const [scores, setScores] = useState([]);
+  const navigate = useNavigate();
 
+  // Učitavamo top rezultate sa servera
   useEffect(() => {
     getScoreboard()
       .then((data) => {
-        console.log(data)
         if (data.scores) setScores(data.scores);
       })
       .catch((err) => console.error("Failed to fetch scoreboard:", err));
   }, []);
 
+  // Logout funkcija
+  const handleLogout = () => {
+    logout();
+    navigate("/"); // ide na login
+  };
+
+  // Ponovi kviz funkcija
+  const handleRetry = () => {
+    navigate("/quiz", { replace: true, state: { retry: true } });
+  };
+
   if (scores.length === 0)
-    return <div className="scoreboard-loading">Loading scoreboard...</div>;
+    return <div className="scoreboard-loading">No results yet.</div>;
 
   return (
     <div className="scoreboard-page">
+      <div className="scoreboard-actions">
+        <button className="btn-logout" onClick={handleLogout}>Logout</button>
+        <button className="btn-retry" onClick={handleRetry}>Ponovi kviz</button>
+      </div>
+
       <h1 className="scoreboard-title">Top 20 Players</h1>
       <div className="scoreboard-grid">
         {scores.map((item, idx) => (

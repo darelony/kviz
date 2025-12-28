@@ -30,37 +30,44 @@ exports.submitQuiz = async (req, res) => {
       return res.status(400).json({ error: "No answers submitted" });
     }
 
+    // Nabavljamo tačne opcije za posata pitanja
     const ids = answers.map(a => a.questionId);
-    const correct = await Question.getCorrectAnswers(ids);
+    const correctAnswers = await Question.getCorrectAnswers(ids);
 
     let score = 0;
+    let correctCount = 0;
+    let wrongCount = 0;
 
-    correct.forEach(q => {
+    correctAnswers.forEach(q => {
       const userAnswer = answers.find(a => a.questionId === q.id);
 
-      
-      let correctText;
-      switch (q.correct_option) {
-        case 'A': correctText = q.option_a; break;
-        case 'B': correctText = q.option_b; break;
-        case 'C': correctText = q.option_c; break;
-        case 'D': correctText = q.option_d; break;
-        default: correctText = null;
-      }
-
-      if (userAnswer && userAnswer.selected === correctText) {
-        score++;
+      if (userAnswer) {
+        // Poređenje po oznaci opcije 'A' | 'B' | 'C' | 'D'
+        if (userAnswer.selectedOption === q.correct_option) {
+          score++;
+          correctCount++;
+        } else {
+          wrongCount++;
+        }
+      } else {
+        wrongCount++;
       }
     });
 
-  
+    // Čuvamo rezultat u bazi
     const sql = `INSERT INTO quiz_results (user_id, score) VALUES (?, ?)`;
     db.run(sql, [req.user.id, score], function(err) {
       if (err) {
         console.error(err);
         return res.status(500).json({ error: "Failed to save score" });
       }
-      res.json({ score });
+
+      // Vraćamo detalje da frontend može odmah da prikaže
+      res.json({
+        score,
+        correct: correctCount,
+        wrong: wrongCount
+      });
     });
 
   } catch (err) {
